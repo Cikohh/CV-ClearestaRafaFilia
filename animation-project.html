@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animation Project - Portofolio Clearesta</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">
+                <img src="images for later/profilepic.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h1>Clearesta Rafa Filia</h1>
+                    <p class="rotating-text">3D ARTIST</p>
+                </div>
+                <div class="contact-info">
+                    <p>Email: artislifelmao@gmail.com</p>
+                    <p>Alamat: Kota Banjarnegara, Provinsi Jawa Tengah</p>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="portfolio.html" class="active">Portofolio</a>
+        </nav>
+
+        <div class="content">
+            <section class="portfolio-detail">
+                <h2>Animation Project</h2>
+                <div class="portfolio-gallery">
+                    <!-- Animation items -->
+                    <div class="gallery-item animation-item" onclick="openAnimation('images for later/anim/anim1.mp4', 'images for later/anim/anim1.gif')">
+                        <div class="animation-placeholder">
+                            <div class="play-icon">▶</div>
+                            <div>Animation 1</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item animation-item" onclick="openAnimation('images for later/anim/anim2.mp4', 'images for later/anim/anim2.gif')">
+                        <div class="animation-placeholder">
+                            <div class="play-icon">▶</div>
+                            <div>Animation 2</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item animation-item" onclick="openAnimation('images for later/anim/anim3.mp4', 'images for later/anim/anim3.gif')">
+                        <div class="animation-placeholder">
+                            <div class="play-icon">▶</div>
+                            <div>Animation 3</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item animation-item" onclick="openAnimation('images for later/anim/anim4.mp4', 'images for later/anim/anim4.gif')">
+                        <div class="animation-placeholder">
+                            <div class="play-icon">▶</div>
+                            <div>Animation 4</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="portfolio-description">
+                    <p>Kumpulan animasi karakter dan objek 2D & 3D</p>
+                </div>
+                <div class="back-button-container">
+                    <a href="portfolio.html" class="back-button">← Kembali ke Portofolio</a>
+                </div>
+            </section>
+        </div>
+
+        <!-- Modal for expanded animation view -->
+        <div id="animationModal" class="modal" onclick="closeAnimationModal()">
+            <span class="close">&times;</span>
+            <div class="modal-content-animation">
+                <video id="animationVideo" controls>
+                    Your browser does not support the video tag.
+                </video>
+                <img id="animationGif" alt="Animation GIF" style="display: none; max-width: 100%; max-height: 80vh; margin: 0 auto;">
+            </div>
+            <div id="caption"></div>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Curriculum Vitae Clearesta Rafa Filia. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const texts = ["3D ARTIST", "2D ARTIST", "GAME DEVELOPER", "ANIMATOR"];
+        let currentIndex = 0;
+        const rotatingText = document.querySelector('.rotating-text');
+
+        function rotateText() {
+            // Add fade out class
+            rotatingText.classList.add('fade-out');
+            
+            // After fade out, change text and fade in
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                rotatingText.textContent = texts[currentIndex];
+                rotatingText.classList.remove('fade-out');
+                rotatingText.classList.add('fade-in');
+                
+                // Remove fade-in class after transition
+                setTimeout(() => {
+                    rotatingText.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+        }
+
+        setInterval(rotateText, 3000);
+
+        // Function to open animation with MP4 or GIF
+        function openAnimation(mp4Path, gifPath) {
+            const modal = document.getElementById("animationModal");
+            const video = document.getElementById("animationVideo");
+            const gif = document.getElementById("animationGif");
+            
+            // Hide both elements initially
+            video.style.display = "none";
+            gif.style.display = "none";
+            
+            // Try to load MP4 first
+            video.src = mp4Path;
+            video.onloadeddata = function() {
+                video.style.display = "block";
+                video.play();
+            };
+            
+            // If MP4 fails, try GIF
+            video.onerror = function() {
+                gif.src = gifPath;
+                gif.onload = function() {
+                    gif.style.display = "block";
+                };
+                gif.onerror = function() {
+                    // If both fail, show error
+                    alert("Animation file not found");
+                    return;
+                };
+            };
+            
+            modal.style.display = "block";
+        }
+
+        // Function to close animation modal
+        function closeAnimationModal() {
+            const modal = document.getElementById("animationModal");
+            const video = document.getElementById("animationVideo");
+            const gif = document.getElementById("animationGif");
+            
+            modal.style.display = "none";
+            video.pause();
+            video.currentTime = 0;
+        }
+
+        // Close modal when pressing ESC key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === "Escape") {
+                closeAnimationModal();
+            }
+        });
+    </script>
+</body>
+</html>

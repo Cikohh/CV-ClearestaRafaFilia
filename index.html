@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Beranda</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">
+                <img src="images for later/profilepic.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h1>Clearesta Rafa Filia</h1>
+                    <p class="rotating-text">3D ARTIST</p>
+                </div>
+                <div class="contact-info">
+                    <p>Email: artislifelmao@gmail.com</p>
+                    <p>Alamat: Kota Banjarnegara, Provinsi Jawa Tengah</p>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html" class="active">Beranda</a>
+            <a href="portfolio.html">Portofolio</a>
+        </nav>
+
+        <div class="content">
+            <section class="summary">
+                <h2>Profil Singkat</h2>
+                <p>Saya adalah seorang art enthusiast, baik 3D, 2D, digital, traditional, graphic design, dan sedikit mengerti tentang musik. Saya dapat bekerja dengan efektif dan efisien dalam tekanan, serta dapat beradaptasi dengan situasi dengan cukup mudah. Saya berharap keahlian saya dalam membuat design atau art, serta keefisienan bekerja saya dapat membantu perkembangan di tempat kerja.</p>
+            </section>
+
+            <section class="education">
+                <h2>Riwayat Pendidikan</h2>
+                <div class="school">
+                    <h3>SMK</h3>
+                    <p class="date">2024 - Sekarang</p>
+                    <p>Kandidat LKS desain grafis</p>
+                </div>
+                
+                <div class="school">
+                    <h3>SMP</h3>
+                    <p class="date">2021 - 2024</p>
+                    <p>Tidak ada</p>
+                </div>
+                
+                <div class="school">
+                    <h3>SD</h3>
+                    <p class="date">2015 - 2021</p>
+                    <p>Tidak ada</p>
+                </div>
+                
+                <div class="school">
+                    <h3>TK</h3>
+                    <p class="date">2012 - 2015</p>
+                    <p>Juara 3 lomba mewarnai</p>
+                </div>
+            </section>
+            
+            <section class="skills">
+                <h2>Keterampilan</h2>
+                <div class="skills-container">
+                    <div class="skill-category">
+                        <h3>Seni & Desain</h3>
+                        <ul>
+                            <li>3D Modeling & Animation</li>
+                            <li>2D Digital Art, Illustration, and Animation</li>
+                            <li>Character Design</li>
+                            <li>Environment Design</li>
+                            <li>2D Traditional Art</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Software & Tools</h3>
+                        <ul>
+                            <li>Blender</li>
+                            <li>Krita</li>
+                            <li>Pixilart</li>
+                            <li>IbisPaintX</li>
+                            <li>Unity</li>
+                            <li>CorelDRAW</li>
+                            <li>Canva</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>Bahasa & Komunikasi</h3>
+                        <ul>
+                            <li>Bahasa Indonesia (Native)</li>
+                            <li>Bahasa Inggris (Intermediate)</li>
+                            <li>Bahasa Jepang (Basic)</li>
+                            <li>Bahasa Spanyol (Basic)</li>
+                            <li>Komunikasi Tim</li>
+                            <li>Presentasi</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Curriculum Vitae Clearesta Rafa Filia. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const texts = ["3D ARTIST", "2D ARTIST", "GAME DEVELOPER", "ANIMATOR"];
+        let currentIndex = 0;
+        const rotatingText = document.querySelector('.rotating-text');
+
+        function rotateText() {
+            // Add fade out class
+            rotatingText.classList.add('fade-out');
+            
+            // After fade out, change text and fade in
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                rotatingText.textContent = texts[currentIndex];
+                rotatingText.classList.remove('fade-out');
+                rotatingText.classList.add('fade-in');
+                
+                // Remove fade-in class after transition
+                setTimeout(() => {
+                    rotatingText.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+        }
+
+        setInterval(rotateText, 3000);
+    </script>
+</body>
+</html>

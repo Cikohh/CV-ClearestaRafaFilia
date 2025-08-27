@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curriculum Vitae - Portofolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="profile">
+                <img src="images for later/profilepic.jpg" alt="Profile Picture" class="profile-pic">
+                <div class="profile-info">
+                    <h1>Clearesta Rafa Filia</h1>
+                    <p class="rotating-text">3D ARTIST</p>
+                </div>
+                <div class="contact-info">
+                    <p>Email: artislifelmao@gmail.com</p>
+                    <p>Alamat: Kota Banjarnegara, Provinsi Jawa Tengah</p>
+                </div>
+            </div>
+        </header>
+
+        <nav>
+            <a href="index.html">Beranda</a>
+            <a href="portfolio.html" class="active">Portofolio</a>
+        </nav>
+
+        <div class="content">
+            <section class="portfolio">
+                <h2>Portofolio Karya</h2>
+                <div class="portfolio-grid">
+                    <a href="character-design.html" class="portfolio-link">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <div class="placeholder">3D Model</div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>3D Character & Object</h3>
+                                <p>Kumpulan gambar hasil render 3D design karakter dan objek</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="illustration-work.html" class="portfolio-link">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <div class="placeholder">2D Art</div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Illustration Work</h3>
+                                <p>Kumpulan gambar hasil karya ilustrasi digital</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="animation-project.html" class="portfolio-link">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <div class="placeholder">Animation</div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Animation Project</h3>
+                                <p>Kumpulan animasi karakter dan objek 2D & 3D</p>
+                            </div>
+                        </div>
+                    </a>
+                    
+                    <a href="graphic-design.html" class="portfolio-link">
+                        <div class="portfolio-item">
+                            <div class="portfolio-image">
+                                <div class="placeholder">Graphic Design</div>
+                            </div>
+                            <div class="portfolio-info">
+                                <h3>Graphic Design</h3>
+                                <p>Kumpulan desain grafis untuk media sosial, poster, dan branding</p>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </section>
+            
+            <section class="projects">
+                <h2>Proyek Terkini</h2>
+                <div class="project-list">
+                    <div class="project">
+                        <h3>Proyek Desain Logo 3D</h3>
+                        <p class="date">2025</p>
+                        <p>Tugas sekolah membuat desain logo 3D menggunakan Blender untuk mata pelajaran desain grafis</p>
+                    </div>
+                    
+                    <div class="project">
+                        <h3>Proyek Ilustrasi Digital</h3>
+                        <p class="date">2025</p>
+                        <p>Proyek pribadi membuat ilustrasi digital untuk mengembangkan keterampilan seni menggunakan Krita, Pixilart, dan IbisPaintX</p>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <footer>
+            <p>&copy; 2025 Curriculum Vitae Clearesta Rafa Filia. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script>
+        const texts = ["3D ARTIST", "2D ARTIST", "GAME DEVELOPER", "ANIMATOR"];
+        let currentIndex = 0;
+        const rotatingText = document.querySelector('.rotating-text');
+
+        function rotateText() {
+            // Add fade out class
+            rotatingText.classList.add('fade-out');
+            
+            // After fade out, change text and fade in
+            setTimeout(() => {
+                currentIndex = (currentIndex + 1) % texts.length;
+                rotatingText.textContent = texts[currentIndex];
+                rotatingText.classList.remove('fade-out');
+                rotatingText.classList.add('fade-in');
+                
+                // Remove fade-in class after transition
+                setTimeout(() => {
+                    rotatingText.classList.remove('fade-in');
+                }, 500);
+            }, 500);
+        }
+
+        setInterval(rotateText, 3000);
+    </script>
+</body>
+</html>
